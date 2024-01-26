@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    {% for recipes in response %}
+    <tr>
+        <td>{{ recipes.id }}</td>
+        <td>{{ recipes.recipe.name_recipe }}</td>
+    </tr>
+    {% endfor %}
+</table>
