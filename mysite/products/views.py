@@ -36,8 +36,8 @@ def show_recipes_without_product(request):
     product_id = request.GET.get('product_id')
     product = Product.objects.get(id=product_id)
 
-    response = RecipeProduct.objects.exclude(product=product) | (
-            RecipeProduct.objects.exclude(weight__gte=10) & RecipeProduct.objects.filter(product=product))
+    response = (RecipeProduct.objects.exclude(product=product)) | (
+        RecipeProduct.objects.filter(product=product, weight__lt=10))
     content = {
         'response': response
     }
